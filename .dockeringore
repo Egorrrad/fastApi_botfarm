@@ -1,0 +1,6 @@
+venv
+Dockerfile
+
+# IDE
+.idea
+.vscode

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+    environment:
+      DB_HOST: "db"
+      DB_PORT: "5432"
+      DB_USER: "api_tester"
+      DB_PASS: "testing"
+      DB_NAME: "botofarm"
+    command: ["/fastapi_app/docker/app.sh"]
+    ports:
+      - "8800:8000"
+    depends_on:
+      - db
+
+
+  db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: "api_tester"
+      POSTGRES_PASSWORD: "testing"
+      POSTGRES_DB: "botofarm"
+    ports:
+      - "5439:5432"
+
